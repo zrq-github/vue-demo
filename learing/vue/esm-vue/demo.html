@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+
+        <h2>{{web.title}}</h2>
+        <h2>{{web.url}}</h2>
+        <h2>{{number}}</h2>
+    </div>
+
+    <script type="module">
+        import {createApp,reactive,ref} from './vue.esm-browser.js';
+        
+        createApp({ 
+            setup(){
+                const number = ref(10);
+                number.value = 20;
+                
+                const web = reactive({
+                    title:"VUE编程测试",
+                    url:"baidu.com",
+                })
+
+                const edit = () => {
+                    web.url = "www.google.com"
+                }
+                
+                
+                return {
+                    msg:"hello world",
+                    web,
+                    number,
+                }
+            }
+        }).mount("#app")
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+
+        <h2>{{web.title}}</h2>
+        <h2>{{web.url}}</h2>
+    </div>
+
+    <script>
+        // 解构
+        // import { createApp, ref } from 'vue'
+        const { createApp, reactive } = Vue
+        
+        createApp({ 
+            setup(){
+                const web = reactive({
+                    title:"VUE编程测试",
+                    url:"baidu.com",
+                })
+                
+                return {
+                    msg:"hello world",
+                    web
+                }
+            }
+        }).mount("#app")
+    </script>
+</body>
+</html>
